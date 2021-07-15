@@ -14,7 +14,8 @@ DeviceTvmSecureConfigurationAssessment
 | extend AVSigVersion = tostring(avdata[0][0])
 | extend AVEngineVersion = tostring(avdata[0][1])
 | extend AVSigLastUpdateTime = tostring(avdata[0][2])
-| project DeviceId, DeviceName, OSPlatform, AVSigVersion, AVEngineVersion, AVSigLastUpdateTime, IsCompliant, IsApplicable
+| extend AVProductVersion = tostring(avdata[0][3])
+| project DeviceId, DeviceName, OSPlatform, AVSigVersion, AVEngineVersion, AVSigLastUpdateTime, AVProductVersion, IsCompliant, IsApplicable
 | join avmodetable on DeviceId
 | project-away DeviceId1
 
